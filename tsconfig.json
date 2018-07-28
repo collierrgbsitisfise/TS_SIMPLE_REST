@@ -3,12 +3,12 @@
         "module": "commonjs",
         "esModuleInterop": false,
         "target": "es6",
-        "noImplicityAny": true,
+        "noImplicitAny": true,
         "moduleResolution": "node",
         "sourceMap": true,
         "outDir": "dist",
         "baseUrl": ".",
-        "path": {
+        "paths": {
             "*": [
                 "node_modules",
                 "src/types/*"
