@@ -1,6 +1,10 @@
 import * as express from "express";
 import * as LinkController from "./controllers/link";
 import * as mongoose from "mongoose";
+import * as bodyParser from "body-parser";
+import * as morgan  from "morgan";
+import * as cors  from "cors";
+import { Request, Response } from 'express';
 
 const app: any = express();
 const API_PREFIX: string = "/api/v1/es-link";
@@ -19,6 +23,15 @@ mongoose.connect(
 );
 
 app.set("port",  process.env.PORT || 5000);
+
+app.use(cors());
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use((req: Request, res: Response, next: any) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
 
 //Routest
 
