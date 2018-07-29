@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 const API_PREFIX_ES_LINK = "/api/v1/es-link";
 const API_PREFIX_PROXY = "/api/v1/proxy";
@@ -18,6 +19,7 @@ mongoose.connect(mongoDbUriConnect, (err) => {
     }
     console.warn("success connection to mongodb");
 });
+/*  Midalwares */
 app.set("port", process.env.PORT || 5000);
 app.use(cors());
 app.use(morgan('dev'));
@@ -26,6 +28,12 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
+});
+/* Serve static files */
+// statics www files
+app.use(express.static(path.join(__dirname, '../www')));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../www', 'index.html'));
 });
 //Routest
 /*API - easy link enpoints*/

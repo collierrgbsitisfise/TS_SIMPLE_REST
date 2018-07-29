@@ -26,6 +26,7 @@ mongoose.connect(
       }
 );
 
+/*  Midalwares */
 app.set("port",  process.env.PORT || 5000);
 
 app.use(cors());
@@ -35,6 +36,14 @@ app.use((req: Request, res: Response, next: any) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
+});
+
+/* Serve static files */
+
+// statics www files
+app.use(express.static(path.join(__dirname, '../www')));
+app.get('/', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, '../www', 'index.html'));
 });
 
 //Routest
