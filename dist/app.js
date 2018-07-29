@@ -2,12 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const LinkController = require("./controllers/link");
+const ProxyController = require("./controllers/proxy");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const app = express();
-const API_PREFIX = "/api/v1/es-link";
+const API_PREFIX_ES_LINK = "/api/v1/es-link";
+const API_PREFIX_PROXY = "/api/v1/proxy";
 const mongoDbUriConnect = "mongodb://admin:vadim1@ds247330.mlab.com:47330/easy-links-db";
 mongoose.connect(mongoDbUriConnect, (err) => {
     if (err) {
@@ -27,10 +29,11 @@ app.use((req, res, next) => {
 });
 //Routest
 /*API - easy link enpoints*/
-app.get(`${API_PREFIX}/create-es-link`, LinkController.createEasyLink);
-app.get(`${API_PREFIX}/get-es-link/:hash`, LinkController.getEasyLink);
-app.get(`${API_PREFIX}/redirect-es-link/:hash`, LinkController.redirectEasyLinkByHash);
-app.get(`${API_PREFIX}/:hash`, LinkController.redirectEasyLinkByHash);
+app.get(`${API_PREFIX_ES_LINK}/create-es-link`, LinkController.createEasyLink);
+app.get(`${API_PREFIX_ES_LINK}/get-es-link/:hash`, LinkController.getEasyLink);
+app.get(`${API_PREFIX_ES_LINK}/redirect-es-link/:hash`, LinkController.redirectEasyLinkByHash);
+app.get(`${API_PREFIX_ES_LINK}/:hash`, LinkController.redirectEasyLinkByHash);
+app.get(`${API_PREFIX_PROXY}/`, ProxyController.getAllProxy);
 app.get(`/:hash`, LinkController.redirectEasyLinkByHash);
 app.listen(app.get("port"), () => {
     console.warn(`app running on PORT: ${app.get('port')}`);

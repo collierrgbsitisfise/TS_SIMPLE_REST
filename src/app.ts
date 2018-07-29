@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as LinkController from "./controllers/link";
+import * as ProxyController from "./controllers/proxy";
 import * as mongoose from "mongoose";
 import * as bodyParser from "body-parser";
 import * as morgan  from "morgan";
@@ -9,7 +10,8 @@ import { Request, Response } from 'express';
 
 
 const app: any = express();
-const API_PREFIX: string = "/api/v1/es-link";
+const API_PREFIX_ES_LINK: string = "/api/v1/es-link";
+const API_PREFIX_PROXY: string = "/api/v1/proxy";
 const mongoDbUriConnect: string = "mongodb://admin:vadim1@ds247330.mlab.com:47330/easy-links-db";
 
 mongoose.connect(
@@ -38,10 +40,11 @@ app.use((req: Request, res: Response, next: any) => {
 //Routest
 
 /*API - easy link enpoints*/
-app.get(`${API_PREFIX}/create-es-link`, LinkController.createEasyLink);
-app.get(`${API_PREFIX}/get-es-link/:hash`, LinkController.getEasyLink);
-app.get(`${API_PREFIX}/redirect-es-link/:hash`, LinkController.redirectEasyLinkByHash);
-app.get(`${API_PREFIX}/:hash`, LinkController.redirectEasyLinkByHash);
+app.get(`${API_PREFIX_ES_LINK}/create-es-link`, LinkController.createEasyLink);
+app.get(`${API_PREFIX_ES_LINK}/get-es-link/:hash`, LinkController.getEasyLink);
+app.get(`${API_PREFIX_ES_LINK}/redirect-es-link/:hash`, LinkController.redirectEasyLinkByHash);
+app.get(`${API_PREFIX_ES_LINK}/:hash`, LinkController.redirectEasyLinkByHash);
+app.get(`${API_PREFIX_PROXY}/`, ProxyController.getAllProxy);
 app.get(`/:hash`, LinkController.redirectEasyLinkByHash);
 
 app.listen(app.get("port"), () => {
