@@ -42,6 +42,7 @@ app.get(`${API_PREFIX}/create-es-link`, LinkController.createEasyLink);
 app.get(`${API_PREFIX}/get-es-link/:hash`, LinkController.getEasyLink);
 app.get(`${API_PREFIX}/redirect-es-link/:hash`, LinkController.redirectEasyLinkByHash);
 app.get(`${API_PREFIX}/:hash`, LinkController.redirectEasyLinkByHash);
+app.get(`/:hash`, LinkController.redirectEasyLinkByHash);
 
 app.listen(app.get("port"), () => {
   console.warn(`app running on PORT: ${app.get('port')}`);

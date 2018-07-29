@@ -72,11 +72,11 @@ exports.redirectEasyLinkByHash = (req, res) => __awaiter(this, void 0, void 0, f
             shortLinkHash: hash,
         });
         if (!result) {
-            res.sendFile(path.join(__dirname, './../templates/invalid-hash.html'));
+            res.sendFile(path.join(__dirname, './../../templates/invalid-hash.html'));
             return;
         }
         if (result.privateOnly) {
-            res.sendFile(path.join(__dirname, './../templates/private-link-redirect.html'));
+            res.sendFile(path.join(__dirname, './../../templates/private-link-redirect.html'));
             return;
         }
         if (result.onceAvailable) {

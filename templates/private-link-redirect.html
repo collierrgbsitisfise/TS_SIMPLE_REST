@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Private link</title>
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+</head>
+<style>
+    body {
+        background: black;
+        font-family: 'VT323', monospace;
+    }
+    .glassTimer {
+        width: 10px;
+        height: 10px;
+        box-shadow: 1px 10px white, 10px 10px white, 20px 10px white, 30px 10px white, 40px 10px white, 50px 10px white, 60px 10px white, 70px 10px white, 80px 10px white, 90px 10px white, 100px 10px white, 110px 10px white, 120px 10px white, 120px 10px white, 130px 10px white, 140px 10px white, 150px 10px white, 10px 20px white, 140px 20px white, 20px 30px white, 30px 30px white, 40px 30px white, 50px 30px white, 60px 30px white, 70px 30px white, 80px 30px white, 90px 30px white, 100px 30px white, 110px 30px white, 120px 30px white, 130px 30px white, 20px 40px white, 130px 40px white, 20px 50px white, 130px 50px white, 20px 60px white, 130px 60px white, 120px 70px white, 110px 80px white, 100px 90px white, 30px 70px white, 40px 80px white, 50px 90px white, 60px 100px white, 90px 100px white, 60px 110px white, 90px 110px white, 60px 120px white, 90px 120px white, 90px 130px white, 100px 140px white, 110px 150px white, 120px 160px white, 130px 170px white, 130px 180px white, 130px 190px white, 130px 200px white, 140px 210px white, 150px 220px white, 140px 220px white, 130px 220px white, 120px 220px white, 110px 220px white, 100px 220px white, 90px 220px white, 80px 220px white, 80px 220px white, 70px 220px white, 60px 220px white, 50px 220px white, 40px 220px white, 30px 220px white, 20px 220px white, 10px 220px white, 1px 220px white, 10px 210px white, 20px 200px white, 20px 190px white, 20px 180px white, 20px 170px white, 30px 160px white, 40px 150px white, 50px 140px white, 60px 130px white, 30px 200px white, 40px 200px white, 50px 200px white, 60px 200px white, 70px 200px white, 80px 200px white, 90px 200px white, 100px 200px white, 110px 200px white, 120px 200px white;
+    }
+    .rotate {
+        animation: rotate 6000ms ease-in-out infinite;
+        width: 155px;
+        height: 240px;
+        margin: 0 auto;
+        margin-top: calc(3%)
+    }
+    .dots {
+        width: 10px;
+        height: 10px;
+        box-shadow: 45px 45px white, 65px 45px white, 85px 45px white, 105px 45px white, 65px 63px white, 85px 63px white, 75px 80px;
+        animation: turnblack 2000ms linear infinite;
+        transition: 300ms;
+    }
+    .wdots {
+        width: 10px;
+        height: 10px;
+        box-shadow: 45px 175px black, 65px 175px black, 85px 175px black, 105px 175px black, 65px 157px black, 85px 157px black, 75px 137px black;
+        animation: turnwhite 4000ms linear infinite;
+        transition: 300ms;
+    }
+    .load {
+        width: 100%;
+        position: relative;
+        text-align: center;
+    }
+    .load h1 {
+        font-size: 40px;
+        color: white;
+    }
+    @keyframes turnblack {
+        10% {
+            box-shadow: 45px 45px black, 65px 45px white, 85px 45px white, 105px 45px white, 65px 63px white, 85px 63px white, 75px 80px;
+        }
+        30% {
+            box-shadow: 45px 45px black, 65px 45px white, 85px 45px white, 105px 45px black, 65px 63px white, 85px 63px black, 75px 80px;
+        }
+        80% {
+            box-shadow: 45px 45px black, 65px 45px black, 85px 45px black, 105px 45px black, 65px 63px white, 85px 63px black, 75px 80px;
+        }
+        100% {
+            box-shadow: 45px 45px black, 65px 45px black, 85px 45px black, 105px 45px black, 65px 63px black, 85px 63px black, 75px 80px black;
+        }
+    }
+    @keyframes turnwhite {
+        10% {
+            box-shadow: 45px 175px black, 65px 175px white, 85px 175px black, 105px 175px black, 65px 157px black, 85px 157px black, 75px 137px black;
+        }
+        20% {
+            box-shadow: 45px 175px black, 65px 175px white, 85px 175px white, 105px 175px black, 65px 157px white, 85px 157px black, 75px 137px black;
+        }
+        40% {
+            box-shadow: 45px 175px black, 65px 175px white, 85px 175px white, 105px 175px black, 65px 157px white, 85px 157px black, 75px 137px black;
+        }
+        60% {
+            box-shadow: 45px 175px white, 65px 175px white, 85px 175px white, 105px 175px white, 65px 157px white, 85px 157px black, 75px 137px black;
+        }
+        90% {
+            box-shadow: 45px 175px white, 65px 175px white, 85px 175px white, 105px 175px white, 65px 157px white, 85px 157px white, 75px 137px black;
+        }
+        100% {
+            box-shadow: 45px 175px white, 65px 175px white, 85px 175px white, 105px 175px white, 65px 157px white, 85px 157px white, 75px 137px white;
+        }
+    }
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="rotate">
+        <div class='glassTimer'>
+            <div id="dots" class='dots dotter'>
+            </div>
+            <div id="wdots" class="wdots dotter">
+            </div>
+        </div>
+    </div>
+    <span class='load'>
+        <h1 class="headerText">Loading
+            <span class='loadDot'>...</span>
+        </h1>
+    </span>
+    <script>
+        dotIntr = setInterval(addDot, 500);
+        function addDot() {
+            var temp = document.querySelector(".loadDot").textContent;
+            if (temp.length < 3) {
+                document.querySelector(".loadDot").textContent = temp + ".";
+            } else {
+                document.querySelector(".loadDot").textContent = "";
+            }
+        }
+        function detectPrivateMode(cb) {
+            var db,
+                on = cb.bind(null, true),
+                off = cb.bind(null, false)
+            function tryls() {
+                try {
+                    localStorage.length ? off() : (localStorage.x = 1, localStorage.removeItem("x"), off());
+                } catch (e) {
+                    // Safari only enables cookie in private mode
+                    // if cookie is disabled then all client side storage is disabled
+                    // if all client side storage is disabled, then there is no point
+                    // in using private mode
+                    navigator.cookieEnabled ? on() : off();
+                }
+            }
+            // Blink (chrome & opera)
+            window.webkitRequestFileSystem ? webkitRequestFileSystem(0, 0, off, on)
+                // FF
+                :
+                "MozAppearance" in document.documentElement.style ? (db = indexedDB.open("test"), db.onerror = on, db.onsuccess =
+                    off)
+                // Safari
+                :
+                /constructor/i.test(window.HTMLElement) || window.safari ? tryls()
+                // IE10+ & edge
+                :
+                !window.indexedDB && (window.PointerEvent || window.MSPointerEvent) ? on()
+                // Rest
+                :
+                off()
+        }
+        detectPrivateMode(function (isPrivateMode) {
+            if (isPrivateMode) {
+                fetch(`/api/v1/es-link/get-es-link/${window.location.href.split('/').pop()}?ignorePrivate=true`)
+                    .then(res => res.json())
+                    .then(data => {
+                        window.location.replace(data.link);
+                    })
+                    .catch(err => {
+                        clearInterval(dotIntr);
+                        document.querySelector(".loadDot").textContent = '';
+                        document.querySelector(".headerText").textContent = 'Ooops it some errors on our side';
+                    })
+            } else {
+                clearInterval(dotIntr);
+                document.querySelector(".loadDot").textContent = '';
+                document.querySelector(".headerText").textContent = 'You must open this link in private mode';
+                setTimeout(() => {
+                    window.location.href = '/'
+                }, 5000);               
+            }
+        });
+    </script>
+</body>
+
+</html>
