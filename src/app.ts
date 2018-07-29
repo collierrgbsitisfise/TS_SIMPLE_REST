@@ -4,7 +4,9 @@ import * as mongoose from "mongoose";
 import * as bodyParser from "body-parser";
 import * as morgan  from "morgan";
 import * as cors  from "cors";
+import * as path  from "path";
 import { Request, Response } from 'express';
+
 
 const app: any = express();
 const API_PREFIX: string = "/api/v1/es-link";

@@ -94,12 +94,12 @@ export const createEasyLink = async (req: Request, res: Response) => {
       });
   
       if (!result) {
-        res.sendFile(path.join(__dirname, './../templates/invalid-hash.html'));
+        res.sendFile(path.join(__dirname, './../../templates/invalid-hash.html'));
         return;
       }
   
       if (result.privateOnly) {
-        res.sendFile(path.join(__dirname, './../templates/private-link-redirect.html'));
+        res.sendFile(path.join(__dirname, './../../templates/private-link-redirect.html'));
         return;
       }
   

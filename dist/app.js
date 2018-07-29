@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 const API_PREFIX = "/api/v1/es-link";
 const mongoDbUriConnect = "mongodb://admin:vadim1@ds247330.mlab.com:47330/easy-links-db";
@@ -31,6 +32,9 @@ app.get(`${API_PREFIX}/create-es-link`, LinkController.createEasyLink);
 app.get(`${API_PREFIX}/get-es-link/:hash`, LinkController.getEasyLink);
 app.get(`${API_PREFIX}/redirect-es-link/:hash`, LinkController.redirectEasyLinkByHash);
 app.get(`${API_PREFIX}/:hash`, LinkController.redirectEasyLinkByHash);
+app.get("/t", (req, res) => {
+    res.sendFile(path.join(__dirname, './../templates/invalid-hash.html'));
+});
 app.listen(app.get("port"), () => {
     console.warn(`app running on PORT: ${app.get('port')}`);
 });
