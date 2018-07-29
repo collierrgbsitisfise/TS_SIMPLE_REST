@@ -1,12 +1,12 @@
-import * as  express from "express";
-
+import * as  express from 'express';
+import * as LinkController from './controllers/link';
 const app = express();
 
 app.set("port", 3000);
 
-app.get("/", (req: any, res: any) => {
-    res.send("Hello World");
-});
+
+//Routest
+app.get("/", LinkController.createEasyLink);
 
 app.listen(app.get("port"), () => {
     console.log('app running');
