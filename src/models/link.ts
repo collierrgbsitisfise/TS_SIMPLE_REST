@@ -1,19 +1,5 @@
 import * as mongoose from "mongoose";
-
-const uri: string = "mongodb://admin:vadim1@ds247330.mlab.com:47330/easy-links-db";
 const linkRegExp = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i;
-
-mongoose.connect(
-  uri,
-  (err: any) => {
-    if (err) {
-      console.log("error conncetion");
-      return;
-    }
-
-    console.log("success connection to mongodb");
-  }
-);
 
 const LinkSchema = new mongoose.Schema({
   link: {

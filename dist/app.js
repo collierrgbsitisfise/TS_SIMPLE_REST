@@ -2,11 +2,25 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const LinkController = require("./controllers/link");
+const mongoose = require("mongoose");
 const app = express();
-app.set("port", 3000);
+const API_PREFIX = "/api/v1/es-link";
+const mongoDbUriConnect = "mongodb://admin:vadim1@ds247330.mlab.com:47330/easy-links-db";
+mongoose.connect(mongoDbUriConnect, (err) => {
+    if (err) {
+        console.error("error conncetion");
+        return;
+    }
+    console.warn("success connection to mongodb");
+});
+app.set("port", process.env.PORT || 5000);
 //Routest
-app.get("/", LinkController.createEasyLink);
+/*API - easy link enpoints*/
+app.get(`${API_PREFIX}/create-es-link`, LinkController.createEasyLink);
+app.get(`${API_PREFIX}/get-es-link/:hash`, LinkController.getEasyLink);
+app.get(`${API_PREFIX}/redirect-es-link/:hash`, LinkController.redirectEasyLinkByHash);
+app.get(`${API_PREFIX}/:hash`, LinkController.redirectEasyLinkByHash);
 app.listen(app.get("port"), () => {
-    console.log('app running');
+    console.warn(`app running on PORT: ${app.get('port')}`);
 });
 //# sourceMappingURL=app.js.map

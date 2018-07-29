@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const url = require("url");
+const path = require("path");
 const link_1 = require("./../models/link");
 exports.createEasyLink = (req, res) => __awaiter(this, void 0, void 0, function* () {
     try {
@@ -31,6 +32,60 @@ exports.createEasyLink = (req, res) => __awaiter(this, void 0, void 0, function*
         });
         const result = yield shortLink.save();
         res.send(result);
+    }
+    catch (err) {
+        res.status(500).send(err);
+    }
+});
+exports.getEasyLink = (req, res) => __awaiter(this, void 0, void 0, function* () {
+    try {
+        const { query, } = url.parse(req.url, true);
+        const { ignorePrivate, } = query;
+        const { hash, } = req.params;
+        const result = yield link_1.default.findOne({
+            shortLinkHash: hash,
+        });
+        if (!result) {
+            res.status(404).send(`invalid hash: ${hash}`);
+            return;
+        }
+        if (result.privateOnly && !ignorePrivate) {
+            res.status(404).send('Private Link');
+            return;
+        }
+        if (result.onceAvailable) {
+            yield link_1.default.remove({
+                /*eslint-disable */
+                _id: result._id,
+            }).exec();
+        }
+        res.send(result);
+    }
+    catch (err) {
+        res.status(500).send(err);
+    }
+});
+exports.redirectEasyLinkByHash = (req, res) => __awaiter(this, void 0, void 0, function* () {
+    try {
+        const { hash, } = req.params;
+        const result = yield link_1.default.findOne({
+            shortLinkHash: hash,
+        });
+        if (!result) {
+            res.sendFile(path.join(__dirname, './../templates/invalid-hash.html'));
+            return;
+        }
+        if (result.privateOnly) {
+            res.sendFile(path.join(__dirname, './../templates/private-link-redirect.html'));
+            return;
+        }
+        if (result.onceAvailable) {
+            yield link_1.default.remove({
+                /*eslint-disable */
+                _id: result._id,
+            }).exec();
+        }
+        res.redirect(301, result.link);
     }
     catch (err) {
         res.status(500).send(err);
