@@ -4,6 +4,7 @@ const express = require("express");
 const LinkController = require("./controllers/link");
 const ProxyController = require("./controllers/proxy");
 const GifPovarController = require("./controllers/gif-povar");
+const PovarenokController = require("./controllers/povarenok");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
@@ -12,7 +13,8 @@ const path = require("path");
 const app = express();
 const API_PREFIX_ES_LINK = "/api/v1/es-link";
 const API_PREFIX_PROXY = "/api/v1/proxy";
-const API_PREFIX_GIF_POVAR = "/api/v1/git-povar";
+const API_PREFIX_GIF_POVAR = "/api/v1/gif-povar";
+const API_PREFIX_POVARENOK = "/api/v1/povarenok";
 const mongoDbUriConnect = "mongodb://admin:vadim1@ds247330.mlab.com:47330/easy-links-db";
 mongoose.connect(mongoDbUriConnect, (err) => {
     if (err) {
@@ -45,6 +47,7 @@ app.get(`${API_PREFIX_ES_LINK}/redirect-es-link/:hash`, LinkController.redirectE
 app.get(`${API_PREFIX_ES_LINK}/:hash`, LinkController.redirectEasyLinkByHash);
 app.get(`${API_PREFIX_PROXY}/`, ProxyController.getAllProxy);
 app.get(`${API_PREFIX_GIF_POVAR}/`, GifPovarController.getAllGifPovarCooks);
+app.get(`${API_PREFIX_POVARENOK}/`, PovarenokController.getAllPovarenokCooks);
 app.get(`/:hash`, LinkController.redirectEasyLinkByHash);
 app.listen(app.get("port"), () => {
     console.warn(`app running on PORT: ${app.get('port')}`);
