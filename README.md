@@ -20,9 +20,22 @@ npm run watch-ts
 npm run start 
 ```
 
+
+
+
+
+
 # Start pm2 using babel interpretor
 
 >**npm run pm2-start**
-# Set SSL sertificates (LetsEncrypt)
+# Set SSL sertificates (LetsEncrypt)     
+
+
+
+
+
+
+
+
 
 >**https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04**
