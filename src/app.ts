@@ -45,7 +45,7 @@ app.use((req: Request, res: Response, next: any) => {
 /* Serve static files */
 
 // statics www files
-app.use(express.static(path.join(__dirname, '../www')));
+app.use(express.static(path.join(__dirname, '../madart')));
 app.get('/', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../www', 'index.html'));
 });
