@@ -84,11 +84,15 @@
 }
 
 /* Hides flash (Firefox problem) and selects (IE) */
-.body-overlayed embed, .body-overlayed object, .body-overlayed select {
+.body-overlayed embed,
+.body-overlayed object,
+.body-overlayed select {
 	visibility: hidden;
 }
 
-#sbox-window embed, #sbox-window object, #sbox-window select {
+#sbox-window embed,
+#sbox-window object,
+#sbox-window select {
 	visibility: visible;
 }
 
@@ -111,54 +115,64 @@
 	width: 100%;
 	background: url(../images/modal/bg_n.png) repeat-x;
 }
+
 .sbox-bg-ne {
 	right: -33px;
 	top: -40px;
 	background: url(../images/modal/bg_ne.png) no-repeat;
 }
+
 .sbox-bg-e {
 	right: -33px;
 	top: 0;
 	height: 100%;
 	background: url(../images/modal/bg_e.png) repeat-y;
 }
+
 .sbox-bg-se {
 	right: -33px;
 	bottom: -40px;
 	background: url(../images/modal/bg_se.png) no-repeat;
 }
+
 .sbox-bg-s {
 	left: 0;
 	bottom: -40px;
 	width: 100%;
 	background: url(../images/modal/bg_s.png) repeat-x;
 }
+
 .sbox-bg-sw {
 	left: -33px;
 	bottom: -40px;
 	background: url(../images/modal/bg_sw.png) no-repeat;
 }
+
 .sbox-bg-w {
 	left: -33px;
 	top: 0;
 	height: 100%;
 	background: url(../images/modal/bg_w.png) repeat-y;
 }
+
 .sbox-bg-nw {
 	left: -33px;
 	top: -40px;
 	background: url(../images/modal/bg_nw.png) no-repeat;
 }
+
 @media (max-width: 979px) {
 	#sbox-btn-close {
 		right: -10px;
 		top: -10px;
 	}
 }
+
 @media (max-device-width: 979px) {
 	#sbox-content {
 		-webkit-overflow-scrolling: touch;
 	}
+
 	#sbox-content.sbox-content-iframe {
 		overflow: scroll;
 		-webkit-overflow-scrolling: touch;
