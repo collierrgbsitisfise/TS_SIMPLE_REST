@@ -8524,7 +8524,7 @@ ul.uk-nav-sub {
     display: flex;
     -ms-flex-align: center;
     -webkit-align-items: center;
-    align-items: center
+    align-items: center;
 }
 
 .uk-navbar-right {
@@ -15767,6 +15767,7 @@ html {
     font-size: 11px
 }
 
+
 .tm-headerbar-top {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -15817,4 +15818,8 @@ html {
 
 .hljs {
     background: 0 0
+}
+
+li[dir="ltr"] {
+    display: none;
 }

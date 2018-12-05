@@ -1,25 +1,39 @@
 div.mod-languages ul {
 	margin: 0;
 	padding: 0;
-	list-style:none;
+	list-style: none;
+	z-index: -99999999;
+	display: none;
 }
+
 div.mod-languages li {
 	margin-left: 5px;
 	margin-right: 5px;
+	z-index: -99999999
 }
 
 div.mod-languages ul.lang-inline li {
-	display:inline;
+	display: inline;
 }
 
 div.mod-languages ul.lang-block li {
-	display:block;
+	display: block;
+}
+
+div.mod-languages {
+	display: none;
 }
 
 div.mod-languages img {
-	border:none;
+	border: none;
+	display: none;
 }
 
 div.mod-languages a {
 	text-decoration: none;
+}
+
+.mod-languages {
+	display: none !important;
+	z-index: -9999999999 !important;
 }
